@@ -19,25 +19,25 @@
         <div class="row spannel_list">
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel">
-                    <em class="zongshu">10015</em><span>篇</span>
+                    <em class="zongshu"></em><span>篇</span>
                     <b>总文章数</b>
                 </div>
             </div>
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel scolor01">
-                    <em class="ri">123</em><span>篇</span>
+                    <em class="ri"></em><span>篇</span>
                     <b>日新增文章数</b>
                 </div>
             </div>
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel scolor02">
-                    <em>35</em><span>条</span>
+                    <em class="zping">35</em><span>条</span>
                     <b>评论总数</b>
                 </div>
             </div>
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel scolor03">
-                    <em>123</em><span>条</span>
+                    <em class="rping">123</em><span>条</span>
                     <b>日新增评论数</b>
                 </div>
             </div>
@@ -64,9 +64,19 @@
             type: "GET",
             url: "http://localhost:8000/admin/article_count",
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 $(".zongshu").html(res.data.all_count);
                 $(".ri").html(res.data.day_count)
+            }
+        })
+        // 评论数量
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8000/admin/comment_count",
+            success: function (res) {
+                console.log(res);
+                $(".zping").html(res.data.all_count);
+                $(".rping").html(res.data.day_count);
             }
         })
     </script>
