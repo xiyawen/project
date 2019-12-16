@@ -25,12 +25,40 @@
                 <i class="iconfont icon-key"></i>
                 <input type="text" class="input_txt" placeholder="邮箱/手机号">
                 <input type="password" class="input_pass" placeholder="密码">
-                <input type="submit" class="input_sub" value="登 录">
+                <input type="button" class="input_sub" value="登 录">
             </form>
         </div>
 
-    </div> 
+    </div>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script>
+        var $input_txt = $(".input_txt");
+        var $input_pass = $(".input_pass");
 
+        $(".input_sub").on("click", function () {
+            var username = $input_txt.val();
+            var password = $input_pass.val();
+            if (username === "" || password === "") {
+                alert("请完整填写登录信息");
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8000/admin/login",
+                data: {
+                    user_name: username,
+                    password: password,
+                },
+                success: function (res) {
+                    if (res.code == 200) {
+                        location.href = "./index.html";
+                    } else {
+                        alert("登录名或密码错误");
+                    }
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
