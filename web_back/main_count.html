@@ -58,23 +58,19 @@
     <div class="container-fluid">
         <div class="column_pannel" id="column_show"></div>
     </div>
+    <script src="./tools/config.js"></script>
+    <script src="./tools/user.js"></script>
     <script>
         // 文章数量
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8000/admin/article_count",
+        user.article_count({
             success: function (res) {
-                // console.log(res);
                 $(".zongshu").html(res.data.all_count);
                 $(".ri").html(res.data.day_count)
             }
-        })
+        });
         // 评论数量
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8000/admin/comment_count",
+        user.comment_count({
             success: function (res) {
-                console.log(res);
                 $(".zping").html(res.data.all_count);
                 $(".rping").html(res.data.day_count);
             }
