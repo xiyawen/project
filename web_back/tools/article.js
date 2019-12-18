@@ -2,7 +2,7 @@ var article = {
     // 查询展示分类列表
     category_search: function (options) {
         $.ajax({
-            url: "http://localhost:8000/admin/category_search",
+            url: SEARCH,
             success: function (res) {
                 options.success(res)
             }
@@ -12,7 +12,7 @@ var article = {
     category_add: function (options) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8000/admin/category_add",
+            url: CATEGORY_ADD,
             data: { //$("form").serialize(),
                 name: options.data.nameval,
                 slug: options.data.slugval,
@@ -30,7 +30,7 @@ var article = {
     category_edit: function (options) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8000/admin/category_edit",
+            url: CATEGORY_EDIT,
             data: options.data.name,
             success: function (res) {
                 if (res.code === 200) {
@@ -45,7 +45,7 @@ var article = {
     category_delete: function (options) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8000/admin/category_delete",
+            url: CATEGORY_DELETE,
             data: {
                 id: options.data.id,
             },
